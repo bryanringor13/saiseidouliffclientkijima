@@ -29,7 +29,6 @@ const Task4 = () => {
     if (item.contentType === 'selection')
       return (
         <Select
-          defaultValue={item.value}
           style={{ width: 120 }}
           onChange={value => onChangeFieldHandler(value, index)}
           placeholder={item.name}
