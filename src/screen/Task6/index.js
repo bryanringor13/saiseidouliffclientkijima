@@ -1,14 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './style.css';
 import 'antd/dist/antd.css';
 import { Row, Col } from 'antd';
 import { Input, Button } from 'antd';
 import { PAY_BUTTON } from '../../utils/const';
+import liff from '@line/liff';
 
 const Task6 = () => {
+  const [liffReady, setLiffReady] = useState(false);
+  const [allowActions, setAllowActions] = useState(false);
+
   const onSubmit = () => {
-    console.log('Pay');
+    sendMessage();
   };
+
+  const sendMessage = async message => {
+    liff
+      .sendMessages([
+        {
+          type: 'text',
+          text: 'asd'
+        }
+      ])
+      .then(function() {
+        liff.closeWindow();
+      })
+      .catch(error => {
+        setErrorMess('sendMessages: ', error);
+      });
+  };
+
+  useEffect(() => {
+    liff.ready
+      .then(() => {
+        setAllowActions(true);
+      })
+      .catch(error => {
+        setAllowActions(false);
+      });
+  }, [liffReady]);
 
   return (
     <div className="content">
@@ -21,7 +51,12 @@ const Task6 = () => {
           </div>
           <div className="btn-content">
             <Row style={{ width: '100%' }}>
-              <Button block type="primary" onClick={() => onSubmit()}>
+              <Button
+                block
+                disabled={!allowActions}
+                type="primary"
+                onClick={() => onSubmit()}
+              >
                 {PAY_BUTTON}
               </Button>
             </Row>
