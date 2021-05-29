@@ -7,7 +7,6 @@ import { PAY_BUTTON } from '../../utils/const';
 import liff from '@line/liff';
 
 const Task6 = () => {
-  const [liffReady, setLiffReady] = useState(false);
   const [allowActions, setAllowActions] = useState(false);
 
   const onSubmit = () => {
@@ -38,7 +37,7 @@ const Task6 = () => {
       .catch(error => {
         setAllowActions(false);
       });
-  }, [liffReady]);
+  }, []);
 
   return (
     <div className="content">
