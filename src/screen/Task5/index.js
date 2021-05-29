@@ -125,7 +125,7 @@ const Task5 = () => {
   };
 
   const onFinishFailed = errorInfo => {
-    setErrorMess('ERROR: ', errorInfo);
+    setErrorMess('onFinishFailed: ', errorInfo);
   };
 
   const sendMessage = async message => {
@@ -141,7 +141,7 @@ const Task5 = () => {
         liff.closeWindow();
       })
       .catch(error => {
-        setErrorMess('ERROR: ', error);
+        setErrorMess('sendMessages: ', error);
       });
   };
 
