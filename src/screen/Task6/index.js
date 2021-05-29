@@ -11,7 +11,10 @@ const Task6 = () => {
   const [amountInput, setTextInput] = useState(0);
 
   const onSubmit = () => {
-    if (amountInput > 0) sendMessage(amountInput);
+    if (amountInput > 0)
+      sendMessage(
+        `https://liff.line.me/1656043326-pMq6BjwJ/payment=${amountInput}`
+      );
   };
 
   const sendMessage = async amountInput => {
