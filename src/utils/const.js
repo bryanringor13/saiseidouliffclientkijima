@@ -12,6 +12,10 @@
 // export const ORDERER_TITLE = '注文者役職'; // k
 // export const CONTACT_INFORMATION = 'ご連絡先'; // l
 
+export const TASKS4 = 'task4';
+export const TASKS5 = 'task5';
+export const TASKS6 = 'task6';
+
 export const FIELDS = [
   {
     name: '郵便番号',
