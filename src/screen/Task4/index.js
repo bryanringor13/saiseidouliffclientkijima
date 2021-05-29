@@ -6,10 +6,8 @@ import { Input } from 'antd';
 import Field from '../../components/Field';
 import { TASK4_FIELDS, CONFIRM_BUTTON } from '../../utils/const';
 
-
 const { TextArea } = Input;
 const { Option } = Select;
-
 
 const Task4 = () => {
   const [dataField, setDataField] = useState(TASK4_FIELDS);
@@ -43,7 +41,8 @@ const Task4 = () => {
       );
 
     return (
-      <TextArea rows={4}
+      <TextArea
+        rows={4}
         placeholder={item.name}
         onChange={event => onChangeFieldHandler(event.target.value, index)}
       />
@@ -51,13 +50,32 @@ const Task4 = () => {
   };
 
   const onSubmit = () => {
+    let message = '';
 
     dataField.map(a => {
+      message.concat(`${a.name}: ${a.value}\n`);
       localStorage.setItem(a.name, a.value);
     });
 
-    if(!dataField[0].value) return;
+    if (!dataField[0].value) return;
 
+    sendMessage(message);
+  };
+
+  const sendMessage = async message => {
+    liff
+      .sendMessages([
+        {
+          type: 'text',
+          text: message
+        }
+      ])
+      .then(function() {
+        liff.closeWindow();
+      })
+      .catch(error => {
+        setErrorMess('sendMessages: ', error);
+      });
   };
 
   return (
@@ -74,7 +92,7 @@ const Task4 = () => {
                 />
               ))}
             </Row>
-          </div>          
+          </div>
           <div className="btn-content">
             <Row style={{ width: '100%' }}>
               <Button block type="primary" onClick={() => onSubmit()}>
