@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'antd/dist/antd.css';
 import { Row, Col } from 'antd';
 import { Select, Button } from 'antd';
 import { Input } from 'antd';
 import Field from '../../components/Field';
 import { TASK4_FIELDS, CONFIRM_BUTTON } from '../../utils/const';
-
+import liff from '@line/liff';
 
 const { TextArea } = Input;
 const { Option } = Select;
 
-
 const Task4 = () => {
+  const [allowActions, setAllowActions] = useState(false);
   const [dataField, setDataField] = useState(TASK4_FIELDS);
 
   const onChangeFieldHandler = (value, index) => {
@@ -43,7 +43,8 @@ const Task4 = () => {
       );
 
     return (
-      <TextArea rows={4}
+      <TextArea
+        rows={4}
         placeholder={item.name}
         onChange={event => onChangeFieldHandler(event.target.value, index)}
       />
@@ -51,14 +52,42 @@ const Task4 = () => {
   };
 
   const onSubmit = () => {
-
     dataField.map(a => {
       localStorage.setItem(a.name, a.value);
     });
 
-    if(!dataField[0].value) return;
+    if (!dataField[0].value) return;
 
+    const message = `${a.name} ${a.value}`;
+
+    sendMessage();
   };
+
+  const sendMessage = async message => {
+    liff
+      .sendMessages([
+        {
+          type: 'text',
+          text: message
+        }
+      ])
+      .then(function() {
+        liff.closeWindow();
+      })
+      .catch(error => {
+        setErrorMess('sendMessages: ', error);
+      });
+  };
+
+  useEffect(() => {
+    liff.ready
+      .then(() => {
+        setAllowActions(true);
+      })
+      .catch(error => {
+        setAllowActions(false);
+      });
+  }, []);
 
   return (
     <div className="content">
@@ -74,10 +103,15 @@ const Task4 = () => {
                 />
               ))}
             </Row>
-          </div>          
+          </div>
           <div className="btn-content">
             <Row style={{ width: '100%' }}>
-              <Button block type="primary" onClick={() => onSubmit()}>
+              <Button
+                block
+                disabled={!allowActions}
+                type="primary"
+                onClick={() => onSubmit()}
+              >
                 {CONFIRM_BUTTON}
               </Button>
             </Row>
