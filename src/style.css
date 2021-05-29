@@ -1,0 +1,9 @@
+.main-content {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

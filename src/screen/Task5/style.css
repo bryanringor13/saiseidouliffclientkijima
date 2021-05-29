@@ -1,0 +1,48 @@
+.content {
+  margin-top: 10px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.left-content {
+  background-color: #fce9da;
+}
+
+.right-content {
+  background-color: #f2efe8;
+}
+
+.padding-content {
+  padding: 10px;
+}
+
+.btn-content {
+  margin-top: 10px;
+}
+
+.ant-row.ant-form-item.padding-content.left-content {
+  width: 70vw;
+  display: flex;
+}
+
+.ant-form-item-label {
+  width: 15vw;
+  float: left;
+}
+
+.ant-form-item-label > label {
+  float: left;
+  padding: 10px;
+  margin-top: 8px;
+}
+
+.ant-form-horizontal .ant-form-item-control {
+  background-color: #f2efe8;
+  padding: 10px;
+}
+
+.ant-form-item {
+  margin-bottom: 0px !important;
+}
