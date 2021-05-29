@@ -107,13 +107,10 @@ const Task5 = () => {
   };
 
   const onSubmit = () => {
-    console.log();
-    // sendMessage();
-    setErrorMess('ONSUBMIT: ');
+    console.log('onSubmit');
   };
 
   const onFinish = values => {
-    // console.log('Success:', values);
     let message = '';
 
     dataField.map((item, index) => {
@@ -126,7 +123,7 @@ const Task5 = () => {
   };
 
   const onFinishFailed = errorInfo => {
-    setErrorMess('onFinishFailed: ', errorInfo);
+    setErrorMess('onFinishFailed: ');
   };
 
   const sendMessage = async message => {
@@ -138,7 +135,6 @@ const Task5 = () => {
         }
       ])
       .then(function() {
-        setErrorMess('DONE');
         liff.closeWindow();
       })
       .catch(error => {
@@ -153,13 +149,9 @@ const Task5 = () => {
           liffId: LIFF_APP_ID
         })
         .then(function() {
-          setErrorMess(state => {
-            return `${state} - Liff Config done`;
-          });
           setLiffReady(true);
         })
         .catch(error => {
-          setErrorMess('Liff error: ', error);
           setLiffReady(false);
         });
     };
@@ -170,22 +162,15 @@ const Task5 = () => {
   useEffect(() => {
     liff.ready
       .then(() => {
-        setErrorMess(state => {
-          return `${state} - Ready`;
-        });
         setAllowActions(true);
       })
       .catch(error => {
-        setErrorMess(state => {
-          return `${state} - Not Ready`;
-        });
         setAllowActions(false);
       });
   }, [liffReady]);
 
   return (
     <div className="content">
-      {errorMess.length > 0 && <Alert message={errorMess} type="error" />}
       <Row>
         <Col>
           <div>
