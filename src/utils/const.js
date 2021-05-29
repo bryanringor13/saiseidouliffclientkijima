@@ -141,7 +141,6 @@ export const TASK4_FIELDS = [
     identifier: 'BUDGET',
     contentType: 'selection',
     options: [
-      '',
       '3,300円',
       '5,500円',
       '10,500円',
