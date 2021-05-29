@@ -133,3 +133,4 @@ export const FIELDS = [
 
 export const CONFIRM_BUTTON = '確定';
 export const LIFF_APP_ID = '1655892731-pnQqAM7r';
+export const PAY_BUTTON = 'Pay';
