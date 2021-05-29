@@ -12,7 +12,6 @@ import liff from '@line/liff';
 const { Option } = Select;
 
 const Task5 = () => {
-  const [liffReady, setLiffReady] = useState(false);
   const [dataField, setDataField] = useState(FIELDS);
   const [allowActions, setAllowActions] = useState(false);
   const [errorMess, setErrorMess] = useState('');
@@ -143,23 +142,6 @@ const Task5 = () => {
   };
 
   useEffect(() => {
-    const initLiff = () => {
-      liff
-        .init({
-          liffId: LIFF_APP_ID
-        })
-        .then(function() {
-          setLiffReady(true);
-        })
-        .catch(error => {
-          setLiffReady(false);
-        });
-    };
-
-    initLiff();
-  }, []);
-
-  useEffect(() => {
     liff.ready
       .then(() => {
         setAllowActions(true);
@@ -167,7 +149,7 @@ const Task5 = () => {
       .catch(error => {
         setAllowActions(false);
       });
-  }, [liffReady]);
+  }, []);
 
   return (
     <div className="content">
