@@ -1,17 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import 'antd/dist/antd.css';
 import { Row, Col } from 'antd';
 import { Select, Button } from 'antd';
 import { Input } from 'antd';
 import Field from '../../components/Field';
 import { TASK4_FIELDS, CONFIRM_BUTTON } from '../../utils/const';
-import liff from '@line/liff';
 
 const { TextArea } = Input;
 const { Option } = Select;
 
 const Task4 = () => {
-  const [allowActions, setAllowActions] = useState(false);
   const [dataField, setDataField] = useState(TASK4_FIELDS);
 
   const onChangeFieldHandler = (value, index) => {
@@ -52,15 +50,16 @@ const Task4 = () => {
   };
 
   const onSubmit = () => {
+    let message = '';
+
     dataField.map(a => {
+      message.concat(`${a.name}: ${a.value}\n`);
       localStorage.setItem(a.name, a.value);
     });
 
     if (!dataField[0].value) return;
 
-    const message = `${a.name} ${a.value}`;
-
-    sendMessage();
+    sendMessage(message);
   };
 
   const sendMessage = async message => {
@@ -79,16 +78,6 @@ const Task4 = () => {
       });
   };
 
-  useEffect(() => {
-    liff.ready
-      .then(() => {
-        setAllowActions(true);
-      })
-      .catch(error => {
-        setAllowActions(false);
-      });
-  }, []);
-
   return (
     <div className="content">
       <Row>
@@ -106,12 +95,7 @@ const Task4 = () => {
           </div>
           <div className="btn-content">
             <Row style={{ width: '100%' }}>
-              <Button
-                block
-                disabled={!allowActions}
-                type="primary"
-                onClick={() => onSubmit()}
-              >
+              <Button block type="primary" onClick={() => onSubmit()}>
                 {CONFIRM_BUTTON}
               </Button>
             </Row>
