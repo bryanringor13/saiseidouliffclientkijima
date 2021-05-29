@@ -108,22 +108,24 @@ const Task5 = () => {
   const onSubmit = () => {
     console.log();
     // sendMessage();
+    setErrorMess('ONSUBMIT: ');
   };
 
   const onFinish = values => {
     // console.log('Success:', values);
     let message = '';
 
-    // dataField.map((item, index) => {
-    //   message = message.concat(`${item.name}: ${item.value}\n`);
-    // });
+    dataField.map((item, index) => {
+      message = message.concat(`${item.name}: ${item.value}\n`);
+    });
 
-    // sendMessage(message);
-    setErrorMess('Finish');
+    sendMessage(message);
+
+    // setErrorMess(message);
   };
 
   const onFinishFailed = errorInfo => {
-    console.log('Failed:', errorInfo);
+    setErrorMess('ERROR: ', errorInfo);
   };
 
   const sendMessage = async message => {
@@ -135,10 +137,11 @@ const Task5 = () => {
         }
       ])
       .then(function() {
+        setErrorMess('DONE');
         liff.closeWindow();
       })
       .catch(error => {
-        console.log('ERROR: ', error);
+        setErrorMess('ERROR: ', error);
       });
   };
 
