@@ -5,6 +5,7 @@ import { Select, Button } from 'antd';
 import { Input } from 'antd';
 import Field from '../../components/Field';
 import { TASK4_FIELDS, CONFIRM_BUTTON } from '../../utils/const';
+import liff from '@line/liff';
 
 const { TextArea } = Input;
 const { Option } = Select;
