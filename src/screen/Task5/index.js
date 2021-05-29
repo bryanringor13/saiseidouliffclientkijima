@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './style.css';
 import 'antd/dist/antd.css';
-import { Row, Col } from 'antd';
+import { Row, Col, Alert } from 'antd';
 import Field from '../../components/Field';
 import { Input } from 'antd';
 import { FIELDS, CONFIRM_BUTTON, LIFF_APP_ID } from '../../utils/const';
@@ -127,7 +127,12 @@ const Task5 = () => {
         }
       ])
       .then(function() {
+        <Alert message="Success" type="success" />;
         liff.closeWindow();
+      })
+      .catch(error => {
+        <Alert message="Error" type="error" />;
+        console.log('ERROR: ', error);
       });
   };
 
