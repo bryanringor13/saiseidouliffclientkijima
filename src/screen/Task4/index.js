@@ -55,8 +55,8 @@ const Task4 = () => {
     let message = '';
 
     dataField.map(a => {
-      message.concat(`${a.name}: ${a.value}\n`);
-      localStorage.setItem(a.name, a.value);
+      message = message.concat(`${a.name}: ${a.value}\n`);
+      // localStorage.setItem(a.name, a.value);
     });
 
     if (!dataField[0].value) return;
