@@ -11,6 +11,7 @@ const { TextArea } = Input;
 const { Option } = Select;
 
 const Task4 = () => {
+  const [errMess, setErrMess] = useState('');
   const [allowActions, setAllowActions] = useState(false);
   const [dataField, setDataField] = useState(TASK4_FIELDS);
 
@@ -73,10 +74,11 @@ const Task4 = () => {
         }
       ])
       .then(function() {
+        setErrMess('sendMessages: success');
         liff.closeWindow();
       })
       .catch(error => {
-        setErrorMess('sendMessages: ', error);
+        setErrMess('sendMessages: ', error);
       });
   };
 
@@ -92,6 +94,7 @@ const Task4 = () => {
 
   return (
     <div className="content">
+      {errMess.length > 0 && <Alert message={errMess} type="error" />}
       <Row>
         <Col span={18} offset={3}>
           <div>
