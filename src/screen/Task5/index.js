@@ -163,7 +163,7 @@ const Task5 = () => {
 
   return (
     <div className="content">
-      {errorMess.lenght > 0 && <Alert message={errorMess} type="error" />}
+      {errorMess.length > 0 && <Alert message={errorMess} type="error" />}
       <Row>
         <Col>
           <div>
