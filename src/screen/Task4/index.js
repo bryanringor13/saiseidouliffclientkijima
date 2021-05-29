@@ -93,7 +93,6 @@ const Task4 = () => {
 
   return (
     <div className="content">
-      {errMess.length > 0 && <Alert message={errMess} type="error" />}
       <Row>
         <Col span={18} offset={3}>
           <div>
