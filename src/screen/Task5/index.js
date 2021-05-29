@@ -14,6 +14,7 @@ const { Option } = Select;
 const Task5 = () => {
   const [liffReady, setLiffReady] = useState(false);
   const [dataField, setDataField] = useState(FIELDS);
+  const [allowActions, setAllowActions] = useState(false);
   const [errorMess, setErrorMess] = useState('');
 
   const onChangeDateFieldHandler = (date, dateString, index) => {
@@ -152,7 +153,7 @@ const Task5 = () => {
           liffId: LIFF_APP_ID
         })
         .then(function() {
-          console.log('Liff is ready');
+          console.log('Liff Config done');
           setLiffReady(true);
         })
         .catch(error => {
@@ -163,6 +164,14 @@ const Task5 = () => {
 
     initLiff();
   }, []);
+
+  useEffect(() => {
+    liff.ready
+      .then(() => {
+        setAllowActions(true);
+      })
+      .catch(error => setAllowActions(false));
+  }, [liffReady]);
 
   return (
     <div className="content">
@@ -187,7 +196,7 @@ const Task5 = () => {
                     type="primary"
                     htmlType="submit"
                     onClick={() => onSubmit()}
-                    disabled={!liffReady}
+                    disabled={!allowActions}
                   >
                     {CONFIRM_BUTTON}
                   </Button>
