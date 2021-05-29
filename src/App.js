@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -10,7 +10,8 @@ import Task4 from './screen/Task4';
 import Task5 from './screen/Task5';
 import Task6 from './screen/Task6';
 import './style.css';
-import { TASKS4, TASKS5, TASKS6 } from './utils/const';
+import { LIFF_APP_ID, TASKS4, TASKS5, TASKS6 } from './utils/const';
+import liff from '@line/liff';
 
 const { Option } = Select;
 const App = () => {
@@ -31,6 +32,23 @@ const App = () => {
       </Radio.Group>
     );
   };
+
+  useEffect(() => {
+    const initLiff = () => {
+      liff
+        .init({
+          liffId: LIFF_APP_ID
+        })
+        .then(function() {
+          console.log('initialized: liff');
+        })
+        .catch(error => {
+          console.log('error: init error');
+        });
+    };
+
+    initLiff();
+  }, []);
 
   return (
     <div className="main-content">
