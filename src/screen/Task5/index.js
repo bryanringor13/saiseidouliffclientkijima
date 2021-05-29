@@ -4,7 +4,7 @@ import 'antd/dist/antd.css';
 import { Row, Col, Alert } from 'antd';
 import Field from '../../components/Field';
 import { Input } from 'antd';
-import { FIELDS, CONFIRM_BUTTON, LIFF_APP_ID } from '../../utils/const';
+import { FIELDS, CONFIRM_BUTTON } from '../../utils/const';
 import { DatePicker, Space } from 'antd';
 import { Form, Select, Button } from 'antd';
 import liff from '@line/liff';

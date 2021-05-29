@@ -60,6 +60,7 @@ const Task4 = () => {
 
     if (!dataField[0].value) return;
 
+    // setErrMess(message);
     sendMessage(message);
   };
 
