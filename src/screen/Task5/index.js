@@ -153,11 +153,13 @@ const Task5 = () => {
           liffId: LIFF_APP_ID
         })
         .then(function() {
-          console.log('Liff Config done');
+          setErrorMess(state => {
+            return `${state} - Liff Config done`;
+          });
           setLiffReady(true);
         })
         .catch(error => {
-          console.log('Liff error: ', error);
+          setErrorMess('Liff error: ', error);
           setLiffReady(false);
         });
     };
@@ -168,9 +170,17 @@ const Task5 = () => {
   useEffect(() => {
     liff.ready
       .then(() => {
+        setErrorMess(state => {
+          return `${state} - Ready`;
+        });
         setAllowActions(true);
       })
-      .catch(error => setAllowActions(false));
+      .catch(error => {
+        setErrorMess(state => {
+          return `${state} - Not Ready`;
+        });
+        setAllowActions(false);
+      });
   }, [liffReady]);
 
   return (
