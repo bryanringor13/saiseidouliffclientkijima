@@ -105,7 +105,7 @@ const Task5 = () => {
   };
 
   const onSubmit = () => {
-    console.log(dataField);
+    sendMessage();
   };
 
   const onFinish = values => {

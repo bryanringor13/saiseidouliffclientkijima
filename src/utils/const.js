@@ -177,5 +177,5 @@ export const TASK4_FIELDS = [
 ];
 
 export const CONFIRM_BUTTON = '確定';
-export const LIFF_APP_ID = '1655892731-pnQqAM7r';
+export const LIFF_APP_ID = '1656043326-pMq6BjwJ';
 export const PAY_BUTTON = 'Pay';
