@@ -131,6 +131,47 @@ export const FIELDS = [
   }
 ];
 
+export const TASK4_FIELDS = [
+  {
+    name: '予算の入力',
+    identifier: 'BUDGET',
+    contentType: 'selection',
+    options: [
+      '',
+      '3,300円',
+      '5,500円',
+      '10,500円',
+      '15,500円',
+      '20,500円',
+      '25,500円',
+      '30,500円',
+      '35,500円',
+      '40,500円',
+      '45,500円',
+      '50,500円',
+      '55,500円',
+      '60,500円',
+      '65,500円',
+      '70,500円',
+      '75,500円',
+      '80,500円',
+      '85,500円',
+      '90,500円',
+      '95,500円',
+      '100,500円',
+      '110,000円'
+    ],
+    value: ''
+  },
+  {
+    name: 'ご要望欄(任意)',
+    identifier: 'COMMENT',
+    contentType: 'text-area',
+    options: [],
+    value: ''
+  }
+];
+
 export const CONFIRM_BUTTON = '確定';
 export const LIFF_APP_ID = '1655892731-pnQqAM7r';
 export const PAY_BUTTON = 'Pay';
