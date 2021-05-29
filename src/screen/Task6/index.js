@@ -8,12 +8,10 @@ import liff from '@line/liff';
 
 const Task6 = () => {
   const [allowActions, setAllowActions] = useState(false);
-  const [amountInput, setTextInput] = useState('');
+  const [amountInput, setTextInput] = useState(0);
 
   const onSubmit = () => {
-    let message = '';
-
-    sendMessage(message);
+    if (amountInput > 0) sendMessage(amountInput);
   };
 
   const sendMessage = async amountInput => {
@@ -53,7 +51,8 @@ const Task6 = () => {
           <div className="content">
             <Row style={{ width: '100%' }}>
               <Input
-                onChange={handleChange}
+                type="number"
+                onChange={event => handleChange(event)}
                 placeholder="Amount"
                 size="large"
               />
