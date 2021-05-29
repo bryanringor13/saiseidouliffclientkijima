@@ -8,17 +8,20 @@ import liff from '@line/liff';
 
 const Task6 = () => {
   const [allowActions, setAllowActions] = useState(false);
+  const [amountInput, setTextInput] = useState('');
 
   const onSubmit = () => {
-    sendMessage();
+    let message = '';
+
+    sendMessage(message);
   };
 
-  const sendMessage = async message => {
+  const sendMessage = async amountInput => {
     liff
       .sendMessages([
         {
           type: 'text',
-          text: 'asd'
+          text: amountInput
         }
       ])
       .then(function() {
@@ -39,13 +42,21 @@ const Task6 = () => {
       });
   }, []);
 
+  const handleChange = event => {
+    setTextInput(event.target.value);
+  };
+
   return (
     <div className="content">
       <Row>
         <Col>
           <div className="content">
             <Row style={{ width: '100%' }}>
-              <Input placeholder="Amount" size="large" />
+              <Input
+                onChange={handleChange}
+                placeholder="Amount"
+                size="large"
+              />
             </Row>
           </div>
           <div className="btn-content">
