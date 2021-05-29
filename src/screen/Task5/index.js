@@ -133,7 +133,7 @@ const Task5 = () => {
       .sendMessages([
         {
           type: 'text',
-          text: message
+          text: 'sample message'
         }
       ])
       .then(function() {
