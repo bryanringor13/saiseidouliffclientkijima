@@ -32,6 +32,7 @@ const Task4 = () => {
           defaultValue={item.value}
           style={{ width: 120 }}
           onChange={value => onChangeFieldHandler(value, index)}
+          placeholder={item.name}
         >
           {item.options.map((time, index) => (
             <Option key={index} value={time}>
