@@ -11,7 +11,7 @@ const Task6 = () => {
   const [amountInput, setTextInput] = useState(0);
 
   const onSubmit = () => {
-    if (amountInput > 0) sendMessage();
+    if (amountInput > 0) sendMessage(amountInput);
   };
 
   const sendMessage = async amountInput => {
