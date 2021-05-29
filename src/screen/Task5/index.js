@@ -14,6 +14,7 @@ const { Option } = Select;
 const Task5 = () => {
   const [liffReady, setLiffReady] = useState(false);
   const [dataField, setDataField] = useState(FIELDS);
+  const [errorMess, setErrorMess] = useState('');
 
   const onChangeDateFieldHandler = (date, dateString, index) => {
     currentStateUpdate(date, index);
@@ -113,11 +114,12 @@ const Task5 = () => {
     // console.log('Success:', values);
     let message = '';
 
-    dataField.map((item, index) => {
-      message = message.concat(`${item.name}: ${item.value}\n`);
-    });
+    // dataField.map((item, index) => {
+    //   message = message.concat(`${item.name}: ${item.value}\n`);
+    // });
 
-    sendMessage(message);
+    // sendMessage(message);
+    setErrorMess('Finish');
   };
 
   const onFinishFailed = errorInfo => {
@@ -133,11 +135,9 @@ const Task5 = () => {
         }
       ])
       .then(function() {
-        <Alert message="Success" type="success" />;
         liff.closeWindow();
       })
       .catch(error => {
-        <Alert message="Error" type="error" />;
         console.log('ERROR: ', error);
       });
   };
@@ -163,6 +163,7 @@ const Task5 = () => {
 
   return (
     <div className="content">
+      {errorMess.lenght > 0 && <Alert message={errorMess} type="error" />}
       <Row>
         <Col>
           <div>
