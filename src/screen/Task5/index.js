@@ -105,25 +105,31 @@ const Task5 = () => {
   };
 
   const onSubmit = () => {
-    sendMessage();
+    console.log();
+    // sendMessage();
   };
 
   const onFinish = values => {
-    console.log('Success:', values);
+    // console.log('Success:', values);
+    let message = '';
+
+    dataField.map((item, index) => {
+      message = message.concat(`${item.name}: ${item.value}\n`);
+    });
+
+    sendMessage(message);
   };
 
   const onFinishFailed = errorInfo => {
     console.log('Failed:', errorInfo);
   };
 
-  const sendMessage = async () => {
+  const sendMessage = async message => {
     liff
       .sendMessages([
         {
           type: 'text',
-          text: `[${MESSAGE_FORMAT_TITLE}]\n${MESSAGE_FORMAT_VISIT_CODE}: ${
-            data.qrcode
-          }\n${MESSAGE_FORMAT_PAYMENT_METHOD}: ${data.payment.toUpperCase()}`
+          text: message
         }
       ])
       .then(function() {
