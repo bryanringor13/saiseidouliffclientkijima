@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import 'antd/dist/antd.css';
-import { Row, Col } from 'antd';
-import { Select, Button } from 'antd';
-import { Input } from 'antd';
+import { Input, Select, Button, Alert, Row, Col } from 'antd';
 import Field from '../../components/Field';
 import { TASK4_FIELDS, CONFIRM_BUTTON } from '../../utils/const';
 import liff from '@line/liff';
