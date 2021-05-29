@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'antd/dist/antd.css';
 import { Row, Col } from 'antd';
 import { Select, Button } from 'antd';
@@ -10,6 +10,7 @@ const { TextArea } = Input;
 const { Option } = Select;
 
 const Task4 = () => {
+  const [allowActions, setAllowActions] = useState(false);
   const [dataField, setDataField] = useState(TASK4_FIELDS);
 
   const onChangeFieldHandler = (value, index) => {
@@ -78,6 +79,16 @@ const Task4 = () => {
       });
   };
 
+  useEffect(() => {
+    liff.ready
+      .then(() => {
+        setAllowActions(true);
+      })
+      .catch(error => {
+        setAllowActions(false);
+      });
+  }, []);
+
   return (
     <div className="content">
       <Row>
@@ -95,7 +106,12 @@ const Task4 = () => {
           </div>
           <div className="btn-content">
             <Row style={{ width: '100%' }}>
-              <Button block type="primary" onClick={() => onSubmit()}>
+              <Button
+                disabled={!allowActions}
+                block
+                type="primary"
+                onClick={() => onSubmit()}
+              >
                 {CONFIRM_BUTTON}
               </Button>
             </Row>
