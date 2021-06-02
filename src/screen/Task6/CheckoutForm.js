@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ElementsConsumer, CardElement } from '@stripe/react-stripe-js';
 
 import CardSection from './CardSection';
@@ -48,7 +48,7 @@ class CheckoutForm extends React.Component {
           }
         ])
         .then(function() {
-          console.log('heyyyy');
+          console.log('Success Sending Message');
           liff.closeWindow();
         })
         .catch(error => {
