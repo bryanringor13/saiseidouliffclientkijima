@@ -26,7 +26,7 @@ class CheckoutForm extends React.Component {
 
     const reqPayment = stripe.paymentRequest({
       country: 'JP',
-      currency: 'usd',
+      currency: 'jpy',
       total: {
         label: 'Demo Amount',
         amount: rand
