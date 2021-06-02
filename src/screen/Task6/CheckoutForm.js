@@ -7,6 +7,10 @@ class CheckoutForm extends React.Component {
   handleSubmit = async event => {
     event.preventDefault();
 
+    const min = 1;
+    const max = 1000;
+    const rand = Math.floor(Math.random() * (max - min + 1)) + min;
+
     const { stripe, elements } = this.props;
     if (!stripe || !elements) {
       return;
@@ -18,23 +22,41 @@ class CheckoutForm extends React.Component {
       console.log(result.error.message);
     } else {
       console.log(result.token);
-      const reqPayment = await stripe.paymentRequest({
-        country: 'JP',
-        currency: 'JPY',
-        total: {
-          label: 'Total',
-          amount: 1000
-        },
-        requestPayerName: true,
-        requestPayerEmail: true
-      });
-
-      if (reqPayment.error) {
-        console.log(reqPayment.error.message);
-      } else {
-        console.log(reqPayment.token);
-      }
     }
+
+    const reqPayment = stripe.paymentRequest({
+      country: 'JP',
+      currency: 'usd',
+      total: {
+        label: 'Demo Amount',
+        amount: rand
+      }
+    });
+
+    if (reqPayment.error) {
+      console.log('Failed : ', reqPayment.error.message);
+    } else {
+      console.log('Success', rand);
+    }
+
+    const sendMessage = async () => {
+      liff
+        .sendMessages([
+          {
+            type: 'text',
+            text: `https://liff.line.me/1656043326-pMq6BjwJ/payment=${rand}`
+          }
+        ])
+        .then(function() {
+          console.log('heyyyy');
+          liff.closeWindow();
+        })
+        .catch(error => {
+          console.log('sendMessages: ', error);
+        });
+    };
+
+    sendMessage();
   };
 
   render() {

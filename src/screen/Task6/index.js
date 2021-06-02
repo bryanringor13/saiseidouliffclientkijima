@@ -3,10 +3,9 @@ import './style.css';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import CheckoutForm from './CheckoutForm';
+import { STRIPE_API_KEY } from '../../utils/const';
 
-const stripePromise = loadStripe(
-  'pk_test_51HMF25JPSBMaR4pxhzGJ7SATznEwC7eMAstrSLD44KZfjgfOv40yCtFCQf9VSRkODsW7XVbRQXRlM98fbF3Qonr100UaC9igSM'
-);
+const stripePromise = loadStripe(STRIPE_API_KEY);
 
 const Task6 = () => {
   return (

@@ -178,3 +178,5 @@ export const TASK4_FIELDS = [
 export const CONFIRM_BUTTON = '確定';
 export const LIFF_APP_ID = '1656043326-pMq6BjwJ';
 export const PAY_BUTTON = 'Pay';
+export const STRIPE_API_KEY =
+  'pk_test_51HMF25JPSBMaR4pxhzGJ7SATznEwC7eMAstrSLD44KZfjgfOv40yCtFCQf9VSRkODsW7XVbRQXRlM98fbF3Qonr100UaC9igSM';
