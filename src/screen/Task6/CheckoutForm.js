@@ -44,7 +44,7 @@ class CheckoutForm extends React.Component {
         .sendMessages([
           {
             type: 'text',
-            text: `https://liff.line.me/1656043326-pMq6BjwJ/?payment=${rand}`
+            text: `https://liff.line.me/1656043326-pMq6BjwJ/task6/?payment=${rand}`
           }
         ])
         .then(function() {
