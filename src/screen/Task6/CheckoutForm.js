@@ -63,7 +63,7 @@ class CheckoutForm extends React.Component {
     return (
       <div>
         <div className="product-info">
-          <h3 className="product-title">Stripe Payment</h3>
+          <h3 className="product-title">Test 6 Stripe Payment</h3>
         </div>
         <form onSubmit={this.handleSubmit}>
           <CardSection />
